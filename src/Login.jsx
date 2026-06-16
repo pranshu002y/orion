@@ -1,26 +1,26 @@
 function App() {
   return (
     <div
-      className="min-h-screen bg-cover bg-center p-6 md:p-10"
+      className="min-h-screen bg-cover bg-center p-6 md:p-12"
       style={{
         backgroundImage:
           "url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=2000')",
       }}
     >
-      <div className="min-h-[90vh] border-4 border-white/80 rounded-[40px] backdrop-blur-[5px] relative overflow-hidden">
+      <div className="min-h-[90vh] border-4 border-white/80 rounded-[40px] backdrop-blur-[2px] relative overflow-hidden">
         {/* Navbar */}
         <nav className="flex justify-between items-center px-8 md:px-12 py-8">
           <div className="flex items-center gap-3">
             <div className="w-5 h-5 rounded-full bg-yellow-300"></div>
-            <h1 className="font-bold text-xl">ORION</h1>
+            <h1 className="font-bold text-xl">Harmont</h1>
           </div>
 
           <div className="hidden md:flex gap-10 text-gray-700">
             <a href="/" className="text-yellow-300 font-medium">
               Locations
             </a>
-            <a href="/">Games</a>
-            <a href="/">Tables</a>
+            <a href="/">Rooms</a>
+            <a href="/">Experiences</a>
             <a href="/">Contact</a>
           </div>
 
@@ -38,17 +38,17 @@ function App() {
           </h1>
 
           <p className="max-w-2xl mt-6 text-lg text-gray-700">
-            Discover handpicked luxury cabins in breathtaking locations. Unplug,
-            unwind, and reconnect with what matters most.
+            Discover handpicked luxury cabins in breathtaking locations.
+            Unplug, unwind, and reconnect with what matters most.
           </p>
         </div>
 
         {/* Cabin Image */}
-        <div className="flex justify-center mt-12 ">
+        <div className="flex justify-center mt-12">
           <img
             src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=1200"
             alt="cabin"
-            className="w-[700px] max-w-full object-contain rounded-[40px]"
+            className="w-[700px] max-w-full object-contain"
           />
         </div>
 
@@ -85,26 +85,42 @@ function App() {
         {/* Rating */}
         <div className="absolute bottom-40 right-12 text-white text-right">
           <div className="text-6xl font-bold">★ 4.9</div>
-          {/* <p className="text-xl"></p> */}
+          <p className="text-xl">from 2,400+ stays</p>
         </div>
 
         {/* Bottom Text */}
         <div className="absolute bottom-36 left-1/2 -translate-x-1/2 text-center max-w-xl">
-          <p className="font-medium text-lg text-black-200">
-            Experience The Perfect Blend Of Comfort And Sport, Crafted For Your
-            Ultimate Escape.
+          <p className="font-medium text-lg">
+            Experience The Perfect Blend Of Comfort And Nature,
+            Crafted For Your Ultimate Escape.
           </p>
         </div>
 
         {/* Booking Bar */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2  md:w-[40%] bg-black rounded-full shadow-2xl">
-          <div className="grid md:grid-cols-2 gap-4 items-center p-3 m-3">
-            <button className="bg-white h-14 rounded-full font-semibold ">
-              Login
-            </button>
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 w-[95%] md:w-[85%] bg-white rounded-full shadow-2xl">
+          <div className="grid md:grid-cols-5 gap-4 items-center p-3">
+            <div className="px-4">
+              <p className="text-gray-400 text-sm">Room</p>
+              <p className="font-semibold">Pine Log</p>
+            </div>
 
-            <button className="bg-white h-14 rounded-full font-semibold">
-              Register
+            <div className="px-4 border-l">
+              <p className="text-gray-400 text-sm">Check-in</p>
+              <p className="font-semibold">15 Mar 2025</p>
+            </div>
+
+            <div className="px-4 border-l">
+              <p className="text-gray-400 text-sm">Check-out</p>
+              <p className="font-semibold">30 Mar 2025</p>
+            </div>
+
+            <div className="px-4 border-l">
+              <p className="text-gray-400 text-sm">Guests</p>
+              <p className="font-semibold">4 Adults</p>
+            </div>
+
+            <button className="bg-yellow-200 h-14 rounded-full font-semibold">
+              Book Your Stay
             </button>
           </div>
         </div>
