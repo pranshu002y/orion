@@ -1,10 +1,11 @@
 import axios from "axios";
 
-const api = axios.create({
+const API = axios.create({
   baseURL: "https://backend-orion.onrender.com/api",
 });
 
-api.interceptors.request.use((req) => {
+
+API.interceptors.request.use((req) => {
   const token = localStorage.getItem("token");
 
   if (token) {
@@ -14,4 +15,4 @@ api.interceptors.request.use((req) => {
   return req;
 });
 
-export default api;
+export default API;

@@ -1,21 +1,28 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { getUser, logout } from "../utils/auth";
 
 const Navbar = () => {
   const user = getUser();
   const [open, setOpen] = useState(false);
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    logout();              // clear storage/token
+    setOpen(false);       // close mobile menu
+    navigate("/login", { replace: true }); // redirect safely
+  };
 
   return (
     <nav className="bg-white shadow">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
-        
+
         {/* Logo */}
         <h1 className="text-xl sm:text-2xl font-bold text-blue-600">
           ORION
         </h1>
 
-        {/* Hamburger Button (Mobile) */}
+        {/* Hamburger Button */}
         <button
           className="sm:hidden text-2xl"
           onClick={() => setOpen(!open)}
@@ -38,7 +45,9 @@ const Navbar = () => {
                 </>
               )}
 
-              <button onClick={logout}>Logout</button>
+              <button onClick={handleLogout} className="text-red-600">
+                Logout
+              </button>
             </>
           )}
         </div>
@@ -63,7 +72,10 @@ const Navbar = () => {
                     Admin Dashboard
                   </Link>
 
-                  <Link onClick={() => setOpen(false)} to="/admin/appointments">
+                  <Link
+                    onClick={() => setOpen(false)}
+                    to="/admin/appointments"
+                  >
                     Appointments
                   </Link>
 
@@ -73,13 +85,7 @@ const Navbar = () => {
                 </>
               )}
 
-              <button
-                onClick={() => {
-                  setOpen(false);
-                  logout();
-                }}
-                className="text-left"
-              >
+              <button onClick={handleLogout} className="text-left text-red-600">
                 Logout
               </button>
             </>
