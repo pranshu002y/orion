@@ -8,9 +8,9 @@ const Navbar = () => {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    logout();              // clear storage/token
-    setOpen(false);       // close mobile menu
-    navigate("/login", { replace: true }); // redirect safely
+    logout();             
+    setOpen(false);       
+    navigate("/", { replace: true }); 
   };
 
   return (
