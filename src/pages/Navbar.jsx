@@ -1,17 +1,18 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { getUser, logout } from "../utils/auth";
 
 const Navbar = () => {
   const user = getUser();
   const [open, setOpen] = useState(false);
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
-  const handleLogout = () => {
-    logout();             
-    setOpen(false);       
-    navigate("/", { replace: true }); 
-  };
+ const handleLogout = () => {
+  logout();
+  setOpen(false);
+
+  window.location.replace("/login");
+};
 
   return (
     <nav className="bg-white shadow">
