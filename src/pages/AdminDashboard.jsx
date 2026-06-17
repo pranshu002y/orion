@@ -1,8 +1,4 @@
-import {
-  useEffect,
-  useState,
-} from "react";
-
+import { useEffect, useState } from "react";
 import API from "../services/api";
 
 const AdminDashboard = () => {
@@ -20,44 +16,37 @@ const AdminDashboard = () => {
 
   const booked =
     slots.filter(
-      (s) =>
-        s.status ===
+      (slot) =>
+        slot.status ===
         "booked"
     ).length;
 
   return (
-    <div className="max-w-6xl mx-auto p-5">
-      <h1 className="text-3xl font-bold mb-5">
+    <div className="max-w-7xl mx-auto p-6">
+      <h1 className="text-4xl font-bold mb-6">
         Admin Dashboard
       </h1>
 
-      <div className="grid md:grid-cols-3 gap-4">
-        <div className="bg-white p-5 shadow rounded">
-          <h2>
-            Total Slots
-          </h2>
-
-          <p className="text-3xl">
+      <div className="grid md:grid-cols-3 gap-5">
+        <div className="bg-white p-6 rounded shadow">
+          <h3>Total Slots</h3>
+          <p className="text-3xl font-bold">
             {slots.length}
           </p>
         </div>
 
-        <div className="bg-white p-5 shadow rounded">
-          <h2>
-            Booked Slots
-          </h2>
-
-          <p className="text-3xl">
+        <div className="bg-white p-6 rounded shadow">
+          <h3>Booked Slots</h3>
+          <p className="text-3xl font-bold">
             {booked}
           </p>
         </div>
 
-        <div className="bg-white p-5 shadow rounded">
-          <h2>
+        <div className="bg-white p-6 rounded shadow">
+          <h3>
             Available Slots
-          </h2>
-
-          <p className="text-3xl">
+          </h3>
+          <p className="text-3xl font-bold">
             {slots.length -
               booked}
           </p>

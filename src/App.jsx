@@ -4,18 +4,18 @@ import {
   Route,
 } from "react-router-dom";
 
-import Navbar from "./pages/Navbar";
+import Navbar from "../src/pages/Navbar";
 
-import ProtectedRoute from "./utils/ProtectedRoutes";
-
-import AdminRoute from "./utils/AdminRoute";
-
+import Homepage from "./pages/Homepage";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-import Dashboard from "./pages/Homepage";
-import MyAppointments from "./pages/Myappointment";
-import AdminDashboard from "./pages/AdminDashboard";
-import ManageSlots from "./pages/Myappointment";
+import MyAppointments from "../src/pages/Myappointment";
+import AdminDashboard from "../src/pages/AdminDashboard";
+import ManageSlots from "../src/pages/Manageslots";
+
+import ProtectedRoute from "../src/utils/ProtectedRoutes";
+import AdminRoute from "../src/utils/AdminRoute";
+import AdminAppointment from "./pages/Adminappointment";
 
 function App() {
   return (
@@ -37,7 +37,7 @@ function App() {
           path="/"
           element={
             <ProtectedRoute>
-              <Dashboard />
+              <Homepage />
             </ProtectedRoute>
           }
         />
@@ -68,6 +68,16 @@ function App() {
             </AdminRoute>
           }
         />
+
+        <Route
+  path="/admin/appointments"
+  element={
+    <AdminRoute>
+      <AdminAppointment />
+    </AdminRoute>
+  }
+/>
+
       </Routes>
     </BrowserRouter>
   );

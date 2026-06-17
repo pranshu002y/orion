@@ -2,13 +2,14 @@ import { useEffect, useState } from "react";
 import API from "../services/api";
 
 const Homepage = () => {
-  const [slots, setSlots] = useState([]);
+  const [slots, setSlots] =
+    useState([]);
 
   const fetchSlots = async () => {
     const { data } =
       await API.get("/slots");
 
-    setSlots(data.slots);
+    setSlots(data.slots || []);
   };
 
   useEffect(() => {
@@ -28,9 +29,7 @@ const Homepage = () => {
         }
       );
 
-      alert(
-        "Appointment Booked"
-      );
+      alert("Booked");
 
       fetchSlots();
     } catch (error) {
@@ -42,50 +41,55 @@ const Homepage = () => {
   };
 
   return (
-    <div className="max-w-6xl mx-auto p-5">
-      <h1 className="text-3xl font-bold mb-5">
+    <div className="max-w-7xl mx-auto p-6">
+      <h1 className="text-4xl font-bold mb-8">
         Available Slots
       </h1>
 
-      <div className="grid md:grid-cols-3 gap-4">
-        {slots.map((slot) => (
-          <div
-            key={slot._id}
-            className="bg-white p-4 rounded shadow"
-          >
-            <p>
-              <strong>
-                Date:
-              </strong>{" "}
-              {slot.date}
-            </p>
+      {slots.length === 0 ? (
+        <div className="bg-white p-6 rounded shadow">
+          No Slots Available
+        </div>
+      ) : (
+        <div className="grid md:grid-cols-3 gap-5">
+          {slots.map((slot) => (
+            <div
+              key={slot._id}
+              className="bg-white p-5 rounded shadow"
+            >
+              <h3 className="font-bold">
+                {slot.date}
+              </h3>
 
-            <p>
-              {slot.startTime} -{" "}
-              {slot.endTime}
-            </p>
+              <p>
+                {slot.startTime} -
+                {slot.endTime}
+              </p>
 
-            <p>
-              Status:{" "}
-              {slot.status}
-            </p>
+              <p>
+                Status:
+                <span className="ml-2">
+                  {slot.status}
+                </span>
+              </p>
 
-            {slot.status ===
-              "available" && (
-              <button
-                onClick={() =>
-                  bookSlot(
-                    slot._id
-                  )
-                }
-                className="bg-blue-600 text-white px-3 py-2 mt-3 rounded"
-              >
-                Book
-              </button>
-            )}
-          </div>
-        ))}
-      </div>
+              {slot.status ===
+                "available" && (
+                <button
+                  onClick={() =>
+                    bookSlot(
+                      slot._id
+                    )
+                  }
+                  className="mt-3 bg-green-600 text-white px-4 py-2 rounded"
+                >
+                  Book Slot
+                </button>
+              )}
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 };
